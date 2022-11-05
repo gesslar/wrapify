@@ -1,9 +1,3 @@
-function wrapIt() {
-    let text = editor.getSession().getValue()
-    text = wrapify(text, 80, 0)
-    editor.getSession().setValue(text)
-}
-
 const wrapify = (text = "", maxLineLength = 80, indent = 3) => {
     if(text === null || text === undefined || !text.length) return "";
 
