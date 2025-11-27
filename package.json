@@ -1,5 +1,5 @@
 {
-  "name": "wrapify",
+  "name": "@gesslar/wrapify",
   "version": "1.0.0",
   "description": "A text wrapping script.",
   "type": "module",
