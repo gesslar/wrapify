@@ -22,8 +22,8 @@ console.log(iwrapify(text, 50, 4))
 
 ## CDN
 
-- esm.sh: `import {wrapify} from "https://esm.sh/wrapify"`
-- jsDelivr (ESM): `import wrapify from "https://cdn.jsdelivr.net/npm/wrapify/+esm"`
+- esm.sh: `import {wrapify} from "https://esm.sh/@gesslar/wrapify"`
+- jsDelivr (ESM): `import wrapify from "https://cdn.jsdelivr.net/npm/@gesslar/wrapify/+esm"`
 
 ## API
 
