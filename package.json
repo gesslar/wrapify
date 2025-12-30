@@ -2,7 +2,7 @@
   "name": "@gesslar/wrapify",
   "description": "A text wrapping script.",
   "author": "gesslar",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "license": "Unlicense",
   "homepage": "https://github.com/gesslar/wrapify#readme",
   "repository": {
