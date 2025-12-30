@@ -36,8 +36,8 @@
     "UNLICENSE.txt"
   ],
   "scripts": {
-    "lint": "eslint wrapify.js",
-    "lint:fix": "eslint wrapify.js --fix",
+    "lint": "eslint src/wrapify.js",
+    "lint:fix": "eslint src/wrapify.js --fix",
     "clean": "rm -rfv ./dist",
     "build": "pnpm run clean && mkdir -pv ./dist && pnpm pack --pack-destination ./dist/",
     "update": "pnpm up -L",
