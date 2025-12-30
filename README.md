@@ -1,6 +1,7 @@
-# wrapify
+# @gesslar/wrapify
 
-Lightweight helpers for wrapping multi-paragraph strings with optional hanging indents.
+Lightweight helpers for wrapping multi-paragraph strings with optional hanging
+indents.
 
 ## Install
 
@@ -27,7 +28,10 @@ console.log(iwrapify(text, 50, 4))
 
 ## API
 
-- `wrapify(text?, maxLineLength = 80, indent = 3)` – wraps text with a hanging indent applied to every line.
-- `iwrapify(text?, maxLineLength = 80, indent = 4)` – wraps text with an indent applied after the first line.
+- `wrapify(text?, maxLineLength = 80, indent = 3)` – wraps text with a hanging
+  indent applied to every line.
+- `iwrapify(text?, maxLineLength = 80, indent = 4)` – wraps text with an indent
+  applied after the first line.
 
-Both helpers normalize blank lines between paragraphs and collapse excessive whitespace. Empty, `null`, or `undefined` input returns an empty string.
+Both helpers normalize blank lines between paragraphs and collapse excessive
+whitespace. Empty, `null`, or `undefined` input returns an empty string.
