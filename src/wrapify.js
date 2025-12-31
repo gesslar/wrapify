@@ -90,7 +90,6 @@ const iwrapParagraph = (text, maxLineLength, indent) => {
   const remainingLinesLength = maxLineLength - indent
   const words = text
     .replace(/\r\n/g, "\n")
-    .replace(/\n/g, "\n")
     .split("\n")
     .map(line => line.trim())
     .join("\n")
