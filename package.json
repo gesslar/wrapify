@@ -46,7 +46,10 @@
     "build": "pnpm run clean && mkdir -pv ./dist && pnpm pack --pack-destination ./dist/",
     "update": "pnpm up --latest --recursive",
     "submit": "pnpm publish --access public --//registry.npmjs.org/:_authToken=\"${NPM_ACCESS_TOKEN}\"",
-    "pr": "gt submit -p --ai"
+    "pr": "gt submit -p --ai",
+    "patch": "pnpm version patch",
+    "minor": "pnpm version minor",
+    "major": "pnpm version major"
   },
   "devDependencies": {
     "@gesslar/uglier": "^0.4.0",
