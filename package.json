@@ -44,12 +44,12 @@
     "lint:fix": "eslint src/wrapify.js --fix",
     "clean": "rm -rfv ./dist",
     "build": "pnpm run clean && mkdir -pv ./dist && pnpm pack --pack-destination ./dist/",
-    "update": "pnpm up -L",
+    "update": "pnpm up --latest --recursive",
     "submit": "pnpm publish --access public --//registry.npmjs.org/:_authToken=\"${NPM_ACCESS_TOKEN}\"",
-    "pr": "gt submit --publish --restack --ai"
+    "pr": "gt submit -p --ai"
   },
   "devDependencies": {
-    "@gesslar/uglier": "^0.0.9",
+    "@gesslar/uglier": "^0.4.0",
     "eslint": "^9.39.2"
   }
 }
