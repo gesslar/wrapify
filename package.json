@@ -19,7 +19,6 @@
     "text",
     "format"
   ],
-  "packageManager": "pnpm@10.26.2",
   "engines": {
     "node": ">=22"
   },
@@ -40,19 +39,22 @@
     "UNLICENSE.txt"
   ],
   "scripts": {
+    "test": "node --test 'tests/**/*.test.js'",
     "lint": "eslint src/wrapify.js",
     "lint:fix": "eslint src/wrapify.js --fix",
+    "types": "node -e \"require('fs').rmSync('types',{recursive:true,force:true});\" && tsc -p tsconfig.types.json",
     "clean": "rm -rfv ./dist",
-    "build": "pnpm run clean && mkdir -pv ./dist && pnpm pack --pack-destination ./dist/",
-    "update": "pnpm up --latest --recursive",
-    "submit": "pnpm publish --access public --//registry.npmjs.org/:_authToken=\"${NPM_ACCESS_TOKEN}\"",
+    "build": "npm run clean && mkdir -pv ./dist && npm pack --pack-destination ./dist/",
+    "update": "npx npm-check-updates -u && npm install",
+    "submit": "npm publish --access public --//registry.npmjs.org/:_authToken=\"${NPM_ACCESS_TOKEN}\"",
     "pr": "gt submit -p --ai",
-    "patch": "pnpm version patch",
-    "minor": "pnpm version minor",
-    "major": "pnpm version major"
+    "patch": "npm version patch",
+    "minor": "npm version minor",
+    "major": "npm version major"
   },
   "devDependencies": {
-    "@gesslar/uglier": "^0.5.0",
-    "eslint": "^9.39.2"
+    "@gesslar/uglier": "^2.0.0",
+    "eslint": "^10.0.2",
+    "typescript": "^5.9.3"
   }
 }
