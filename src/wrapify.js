@@ -1,3 +1,13 @@
+/**
+ * Wraps text to a maximum line length, indenting the first line of each
+ * paragraph by the specified amount.
+ *
+ * @param {string} [text=""] - The text to wrap.
+ * @param {number} [maxLineLength=80] - The maximum length of each line.
+ * @param {number} [indent=3] - The number of spaces to indent the first line
+ *   of each paragraph.
+ * @returns {string} The wrapped text.
+ */
 const wrapify = (text = "", maxLineLength = 80, indent = 3) => {
   if(text === null || text === undefined || !text.length)
     return ""
@@ -30,13 +40,12 @@ const wrapParagraph = (text, maxLineLength, indent) => {
   const remainingLinesLength = maxLineLength
   const words = text
     .replace(/\r\n/g, "\n")
-    .replace(/\n/g, "\n")
     .split("\n")
     .map(line => line.trim())
-    .join("\n")
-    .replace(/\n+/g, " ")
+    .join(" ")
     .replace(/\t/g, " ")
-    .split(" ")
+    .split(/\s+/)
+    .filter(Boolean)
 
   let lineLength = 0
   let firstLineDone = false
@@ -58,6 +67,16 @@ const wrapParagraph = (text, maxLineLength, indent) => {
   }, "")
 }
 
+/**
+ * Wraps text to a maximum line length, indenting continuation lines
+ * (all lines after the first) of each paragraph by the specified amount.
+ *
+ * @param {string} [text=""] - The text to wrap.
+ * @param {number} [maxLineLength=80] - The maximum length of each line.
+ * @param {number} [indent=4] - The number of spaces to indent continuation
+ *   lines.
+ * @returns {string} The wrapped text.
+ */
 const iwrapify = (text = "", maxLineLength = 80, indent = 4) => {
   if(text === null || text === undefined || !text.length)
     return ""
@@ -92,10 +111,10 @@ const iwrapParagraph = (text, maxLineLength, indent) => {
     .replace(/\r\n/g, "\n")
     .split("\n")
     .map(line => line.trim())
-    .join("\n")
-    .replace(/\n+/g, " ")
+    .join(" ")
     .replace(/\t/g, " ")
-    .split(" ")
+    .split(/\s+/)
+    .filter(Boolean)
 
   let lineLength = 0
   let firstLineDone = false
