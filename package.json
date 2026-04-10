@@ -7,7 +7,7 @@
     "url": "https://gesslar.dev"
   },
   "version": "1.9.0",
-  "license": "Unlicense",
+  "license": "0BSD",
   "homepage": "https://github.com/gesslar/wrapify#readme",
   "repository": {
     "type": "git",
@@ -36,7 +36,7 @@
   },
   "files": [
     "src/",
-    "UNLICENSE.txt"
+    "LICENSE.txt"
   ],
   "scripts": {
     "test": "node --test 'tests/**/*.test.js'",
@@ -53,8 +53,8 @@
     "major": "npm version major"
   },
   "devDependencies": {
-    "@gesslar/uglier": "^2.0.0",
-    "eslint": "^10.0.2",
-    "typescript": "^5.9.3"
+    "@gesslar/uglier": "^2.4.0",
+    "eslint": "^10.2.0",
+    "typescript": "^6.0.2"
   }
 }
