@@ -35,7 +35,7 @@ console.log(iwrapify(text, 50, 4))
 
 Both helpers normalize blank lines between paragraphs and collapse excessive
 whitespace. Empty, `null`, or `undefined` input returns an empty string.
-
+`@gesslar/wrapify` is licensed under the [0BSD License](LICENSE.txt).
 ## License
 
 `@gesslar/wrapify` is released into the public domain under the [0BSD](LICENSE.txt).
