@@ -29,7 +29,7 @@ console.log(iwrapify(text, 50, 4))
 ## API
 
 - `wrapify(text?, maxLineLength = 80, indent = 3)` – wraps text with indent
-  applied indent applied to first line.
+  applied to first line.
 - `iwrapify(text?, maxLineLength = 80, indent = 4)` – wraps text with an indent
   applied after the first line.
 
