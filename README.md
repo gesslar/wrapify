@@ -6,7 +6,7 @@ indents.
 ## Install
 
 ```bash
-npm install wrapify
+npm install @gesslar/wrapify
 ```
 
 ## Usage
@@ -14,7 +14,7 @@ npm install wrapify
 ### ESM (Node/Deno/Browsers)
 
 ```js
-import wrapify, {wrapify as wrap, iwrapify} from "wrapify"
+import wrapify, {wrapify as wrap, iwrapify} from "@gesslar/wrapify"
 
 const text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
 console.log(wrap(text, 50, 2))
@@ -28,8 +28,8 @@ console.log(iwrapify(text, 50, 4))
 
 ## API
 
-- `wrapify(text?, maxLineLength = 80, indent = 3)` – wraps text with a hanging
-  indent applied to every line.
+- `wrapify(text?, maxLineLength = 80, indent = 3)` – wraps text with indent
+  applied indent applied to first line.
 - `iwrapify(text?, maxLineLength = 80, indent = 4)` – wraps text with an indent
   applied after the first line.
 
