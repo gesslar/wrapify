@@ -1,0 +1,8 @@
+#!/bin/sh
+set -e
+
+if git diff --cached --name-only --diff-filter=ACMR | grep -q '^src/.*\.js$'
+then
+  npm run types --silent
+  git add src/wrapify.d.ts src/wrapify.d.ts.map
+fi
