@@ -23,14 +23,14 @@
     "node": ">=24"
   },
   "type": "module",
-  "main": "./wrapify.js",
-  "module": "./wrapify.js",
-  "types": "./wrapify.d.ts",
+  "main": "./src/wrapify.js",
+  "module": "./src/wrapify.js",
+  "types": "./src/wrapify.d.ts",
   "exports": {
     ".": {
-      "types": "./wrapify.d.ts",
-      "import": "./wrapify.js",
-      "default": "./wrapify.js"
+      "types": "./src/wrapify.d.ts",
+      "import": "./src/wrapify.js",
+      "default": "./src/wrapify.js"
     },
     "./package.json": "./package.json"
   },
