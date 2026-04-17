@@ -5,8 +5,7 @@ export default wrapify;
  *
  * @param {string} [text=""] - The text to wrap.
  * @param {number} [maxLineLength=80] - The maximum length of each line.
- * @param {number} [indent=3] - The number of spaces to indent the first line
- *   of each paragraph.
+ * @param {number} [indent=3] - The number of spaces to indent the first line of each paragraph.
  * @returns {string} The wrapped text.
  */
 export function wrapify(text?: string, maxLineLength?: number, indent?: number): string;
