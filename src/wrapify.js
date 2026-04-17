@@ -4,8 +4,7 @@
  *
  * @param {string} [text=""] - The text to wrap.
  * @param {number} [maxLineLength=80] - The maximum length of each line.
- * @param {number} [indent=3] - The number of spaces to indent the first line
- *   of each paragraph.
+ * @param {number} [indent=3] - The number of spaces to indent the first line of each paragraph.
  * @returns {string} The wrapped text.
  */
 const wrapify = (text = "", maxLineLength = 80, indent = 3) => {
@@ -52,8 +51,9 @@ const wrapParagraph = (text, maxLineLength, indent) => {
 
   return words.reduce((result, word) => {
     const limit = firstLineDone ? remainingLinesLength : firstLineLength
+    const sepCost = lineLength ? 1 : 0
 
-    if(lineLength + word.length > limit) {
+    if(lineLength + sepCost + word.length > limit) {
       firstLineDone = true
       lineLength = word.length
 
@@ -61,7 +61,7 @@ const wrapParagraph = (text, maxLineLength, indent) => {
     }
 
     const separator = lineLength ? " " : ""
-    lineLength += word.length + (lineLength ? 1 : 0)
+    lineLength += word.length + sepCost
 
     return result ? result + `${separator}${word}` : `${word}` // add space only when needed
   }, "")
@@ -120,8 +120,9 @@ const iwrapParagraph = (text, maxLineLength, indent) => {
   let firstLineDone = false
   const wrapped = words.reduce((result, word) => {
     const limit = firstLineDone ? remainingLinesLength : firstLineLength
+    const sepCost = lineLength ? 1 : 0
 
-    if(lineLength + word.length > limit) {
+    if(lineLength + sepCost + word.length > limit) {
       firstLineDone = true
       lineLength = word.length + indent
 
@@ -129,7 +130,7 @@ const iwrapParagraph = (text, maxLineLength, indent) => {
     }
 
     const separator = lineLength ? " " : ""
-    lineLength += word.length + (lineLength ? 1 : 0)
+    lineLength += word.length + sepCost
 
     return result ? result + `${separator}${word}` : `${word}` // add space only when needed
   }, "")

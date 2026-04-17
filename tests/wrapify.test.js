@@ -2,6 +2,7 @@ import { describe, it } from "node:test"
 import assert from "node:assert/strict"
 import wrapify from "../src/wrapify.js"
 import { messyMudText, expectedParagraphCount } from "./fixtures/messy-mud-text.js"
+import bigtext from "./fixtures/bigtext.js"
 
 describe("wrapify", () => {
   describe("empty/null input", () => {
@@ -186,6 +187,36 @@ describe("wrapify", () => {
           assert.ok(line.length <= 60,
             `line exceeds max length: "${line}" (${line.length})`)
         }
+      }
+    })
+  })
+
+  describe("bigtext wrapping integrity", () => {
+    for (const width of [40, 60, 80, 100]) {
+      it(`does not overflow maxLineLength=${width}`, () => {
+        const result = wrapify(bigtext, width, 3)
+        const lines = result.split("\n")
+        const tooLong = lines.filter(l => l.length > width)
+
+        assert.equal(tooLong.length, 0,
+          `${tooLong.length} line(s) exceed width ${width}; first: "${tooLong[0]}" (${tooLong[0]?.length})`)
+      })
+    }
+
+    it("produces exactly 2 paragraphs from bigtext", () => {
+      const result = wrapify(bigtext, 80, 3)
+      const paragraphs = result.split("\n\n")
+
+      assert.equal(paragraphs.length, 2)
+    })
+
+    it("first line of each paragraph is indented", () => {
+      const result = wrapify(bigtext, 80, 3)
+      const paragraphs = result.split("\n\n")
+
+      for (const para of paragraphs) {
+        assert.ok(para.startsWith("   "),
+          `paragraph should start with 3-space indent: "${para.slice(0, 40)}"`)
       }
     })
   })

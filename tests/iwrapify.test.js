@@ -2,6 +2,7 @@ import { describe, it } from "node:test"
 import assert from "node:assert/strict"
 import { iwrapify } from "../src/wrapify.js"
 import { messyMudText, expectedParagraphCount } from "./fixtures/messy-mud-text.js"
+import bigtext from "./fixtures/bigtext.js"
 
 describe("iwrapify", () => {
   describe("empty/null input", () => {
@@ -210,6 +211,49 @@ describe("iwrapify", () => {
         if (line.length > 0) {
           assert.ok(line.length <= 60,
             `line exceeds max length: "${line}" (${line.length})`)
+        }
+      }
+    })
+  })
+
+  describe("bigtext wrapping integrity", () => {
+    for (const width of [40, 60, 80, 100]) {
+      it(`does not overflow maxLineLength=${width}`, () => {
+        const result = iwrapify(bigtext, width, 4)
+        const lines = result.split("\n")
+        const tooLong = lines.filter(l => l.length > width)
+
+        assert.equal(tooLong.length, 0,
+          `${tooLong.length} line(s) exceed width ${width}; first: "${tooLong[0]}" (${tooLong[0]?.length})`)
+      })
+    }
+
+    it("produces exactly 2 paragraphs from bigtext", () => {
+      const result = iwrapify(bigtext, 80, 4)
+      const paragraphs = result.split("\n\n")
+
+      assert.equal(paragraphs.length, 2)
+    })
+
+    it("first line of each paragraph is not indented", () => {
+      const result = iwrapify(bigtext, 80, 4)
+      const paragraphs = result.split("\n\n")
+
+      for (const para of paragraphs) {
+        assert.ok(!para.startsWith(" "),
+          `paragraph first line should not be indented: "${para.slice(0, 40)}"`)
+      }
+    })
+
+    it("continuation lines are indented", () => {
+      const result = iwrapify(bigtext, 80, 4)
+      const paragraphs = result.split("\n\n")
+
+      for (const para of paragraphs) {
+        const paraLines = para.split("\n").filter(l => l.length > 0)
+        for (let i = 1; i < paraLines.length; i++) {
+          assert.ok(paraLines[i].startsWith("    "),
+            `continuation line should be indented: "${paraLines[i]}"`)
         }
       }
     })
